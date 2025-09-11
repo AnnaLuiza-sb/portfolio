@@ -44,15 +44,97 @@ header a {
     transition: 0.2s;
 }
 
-header a:hover {
+header nav.menu-desktop a:hover {
     color: #fff;
     transform: scale(1.05);
 }
 
-header nav ul li {
+header nav ul {
+    list-style-type: none;
+}
+
+
+header nav.menu-desktop ul li {
     display: inline-block;
     padding: 0 40px;
 }
+
+/*Menu Mobile*/
+
+.btn-abrir-menu i{
+    color: purple;
+    font-size: 40px;
+}
+
+
+.menu-mobile {
+    background-color: black;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 0%;
+    overflow: hidden;
+    transition: 0.5s;
+
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+    transition: 0.5s;
+}
+.menu-mobile.abrir-menu ~ .overlay-menu {
+    display: block;
+}
+
+.menu-mobile .btn-fechar {
+    padding: 20px 5%;
+}
+
+.menu-mobile .btn-fechar i {
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 25px;
+    
+}
+
+.menu-mobile .btn-fechar i:hover {
+    color: rgb(223, 31, 223);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-mobile nav ul {
+    text-align: right;
+
+}
+
+.menu-mobile nav ul li a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px 8%;
+    display: block;
+}
+
+.menu-mobile nav ul li a:hover {
+    color: white;
+    background-color: purple;
+}
+
+.overlay-menu {
+    background-color: rgba(0, 0, 0, 0.899);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    display: none;
+}
+
 
 .btn-contato button {
     background: transparent;
@@ -371,25 +453,42 @@ form .btn-enviar input[type=submit] {
 
 .btn-top {
     position: fixed;
-    color: #fff;
-    background-color: purple;
+    bottom: 30px;
+    right: 30px;
     width: 50px;
     height: 50px;
-    bottom: 30px;
+    background-color: purple;
+    color: #fff;
     border-radius: 50%;
     text-align: center;
-    line-height: 50px;
     font-size: 22px;
-    right: 30px;
-    box-shadow: 0 0 8px purple;
+    line-height: 50px;
     text-decoration: none;
-    transition: 0.3s ease-out;
+    box-shadow: 0 0 10px purple;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.btn-top i {
+    pointer-events: none;
+
 }
 
 .btn-top:hover {
     transform: translatey(-6px);
+
 }
 
+.btn-top.mostrar {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 footer {
     padding: 40px 4%;
@@ -401,10 +500,15 @@ footer .flex {
 }
 
 footer .line-footer {
-    padding: 50px 0;
+    padding: 20px 0;
+
 
 }
 
+.borda {
+    border-top: 3px solid purple;
+    margin-top: 30px;
+}
 
 footer .line-footer p i {
     color: purple;
@@ -414,6 +518,134 @@ footer .line-footer p i {
 
 footer .line-footer p a {
     color: #fff;
+
+
+}
+
+@media screen and (max-width:1020px) {
+
+    /*Classes Gerais*/
+    .flex {
+        flex-direction: column;
+    }
+
+    h2.titulo {
+        font-size: 32px;
+        line-height: 35px;
+    }
+
+
+
+    /*Cabeçalho*/
+    .menu-desktop,
+    .btn-contato {
+        display: none;
+    }
+
+    /*Topo do Site*/
+
+    .topo-do-site .flex {
+        flex-direction: column-reverse;
+
+    }
+
+    section.topo-do-site .flex {
+        gap: 40px;
+    }
+
+    section.topo-do-site {
+        padding: 20px 8%;
+    }
+
+    .topo-do-site h1 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .topo-do-site .img-topo-site img {
+        width: 100%;
+
+    }
+
+    /*Habilidades*/
+
+    section.habilidades {
+        padding: 40px 8%;
+    }
+
+    .habilidades .habilidades-box h3 {
+        font-size: 28px;
+
+    }
+
+    /*Sobre*/
+
+    section.sobre {
+        padding: 80px 8%;
+    }
+
+    section.sobre .flex {
+        flex-direction: column-reverse;
+    }
+
+    .sobre .txt-sobre h2 {
+        font-size: 34px;
+        line-height: 33px;
+        text-align: center;
+    }
+
+    .btn-social {
+        text-align: center;
+    }
+
+    .img-sobre img {
+        width: 100%;
+        height: 300px;
+    }
+
+    /*Portfolio*/
+
+    section.portfolio {
+        padding: 80px 8%;
+    }
+
+    section.portfolio .flex {
+        gap: 50px;
+    }
+
+    .img-port {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+
+    }
+
+    .overlay {
+        font-size: 20px;
+    }
+
+    /*Formulário*/
+
+    section.formulario {
+        padding: 80px 8%;
+    }
+
+    .formulario iframe {
+        width: 100%;
+    }
+
+    /*Rodapé*/
+
+    footer .flex {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    footer .line-footer {
+        text-align: center;
+    }
+
+
 
 
 }
